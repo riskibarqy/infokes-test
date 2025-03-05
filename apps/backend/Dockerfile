@@ -2,8 +2,12 @@ FROM oven/bun:latest
 
 WORKDIR /app
 
+COPY package.json ./ 
+
+RUN bun install --frozen-lockfile
+
 COPY . .
 
-RUN bun install
+EXPOSE 3000
 
-CMD ["bun", "index.ts"]
+CMD ["bun", "run", "src/server.ts"]

@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1741205774274,
+      "tag": "0000_create_folders_and_file_table",
+      "breakpoints": true
+    }
+  ]
+}
