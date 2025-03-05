@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@elysiajs/swagger": "^1.2.2",
+    "@planetscale/database": "^1.19.0",
+    "elysia": "^1.2.24",
+    "kysely": "^0.27.6",
+    "postgres": "^3.4.5"
+  }
+}
