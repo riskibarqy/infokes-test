@@ -13,7 +13,7 @@ const fileUsecase = new FileUsecase(fileRepo);
 const fileController = new FileController(fileUsecase);
 
 const folderRepo = new PostgresFolderRepository();
-const folderUsecase = new FolderUsecase(folderRepo);
+const folderUsecase = new FolderUsecase(folderRepo, fileRepo);
 const folderController = new FolderController(folderUsecase);
 
 routes.get('/files', fileController.getAll);
@@ -27,3 +27,4 @@ routes.post('/folders', folderController.create);
 routes.get('/folders/:id', folderController.getById);
 routes.put('/folders/:id', folderController.update);
 routes.delete('/folders/:id', folderController.delete);
+routes.get('/folders/tree', folderController.getFolderTree);

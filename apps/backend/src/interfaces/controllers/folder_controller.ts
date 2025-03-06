@@ -20,7 +20,12 @@ export class FolderController {
     };
 
     getById = async ({ id }: { id: number }) => { 
-        return await this.folderUsecase.getFolderById(id);
+        const folder = await this.folderUsecase.getFolderById(id); 
+        if (folder?.id == 0 ) {
+            return {success: false, message: "Folder not found"};
+        }
+
+        return folder;
     };
 
     update = async ({ params, body, set }: { params: { id: number }; body: Partial<NewFolder>; set: any }) => {
@@ -49,5 +54,9 @@ export class FolderController {
             set.status = 500;
             return { success: false, message: error instanceof Error ? error.message : "Unknown error" };
         }
+    };
+
+    getFolderTree = async () => { 
+        return await this.folderUsecase.getFolderTree();
     };
 }
