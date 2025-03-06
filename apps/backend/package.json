@@ -12,6 +12,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.2.0",
     "@elysiajs/swagger": "^1.2.2",
     "@planetscale/database": "^1.19.0",
     "@vercel/postgres": "^0.10.0",

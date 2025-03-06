@@ -50,7 +50,7 @@ export class PostgresFileRepository {
         const result = await db
             .update(files)
             .set({ deletedAt: getUnixTimestamp() }) 
-            .where(and(eq(files.id, id), isNotNull(files.deletedAt)))
+            .where(and(eq(files.id, id), isNull(files.deletedAt)))
             .returning();
 
         return Array.isArray(result) && result.length > 0;
