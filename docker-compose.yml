@@ -9,24 +9,24 @@ services:
     ports:
       - "5432:5432"
 
-  # backend:
-  #   build: ./apps/backend
-  #   depends_on:
-  #     - database
-  #   environment:
-  #     DB_HOST: database
-  #     DB_USER: postgres
-  #     DB_PASS: password
-  #     DB_NAME: explorer_db
-  #   ports:
-  #     - "3000:3000"
+  backend:
+    build: ./apps/backend
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_USER: postgres
+      DB_PASS: password
+      DB_NAME: explorer_db
+    ports:
+      - "3000:3000"
 
-  # frontend:
-  #   build:
-  #     context: ./apps/frontend
-  #   depends_on:
-  #     - backend
-  #   ports:
-  #     - "5173:5173"
-  #   environment:
-  #     - VITE_API_BASE_URL=http://backend:3000
+  frontend:
+    build:
+      context: ./apps/frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://backend:3000
