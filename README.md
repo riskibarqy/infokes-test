@@ -2,7 +2,7 @@
 
 This is a technical test project using **Vue 3** (Composition API) for the frontend and **ElysiaJS** for the backend. The project is structured as a **monorepo** using **Docker**.
 
-[https://github.com/riskibarqy/infokes-test/blob/main/images/Screenshot%202025-03-06%20231701.png](image)
+![apps view](https://github.com/riskibarqy/infokes-test/blob/main/images/Screenshot%202025-03-06%20231701.png)
 
 ## Prerequisites
 
