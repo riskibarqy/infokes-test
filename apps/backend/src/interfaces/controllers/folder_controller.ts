@@ -19,13 +19,13 @@ export class FolderController {
         }
     };
 
-    getById = async ({ id }: { id: number }) => { 
-        const folder = await this.folderUsecase.getFolderById(id); 
-        if (folder?.id == 0 ) {
-            return {success: false, message: "Folder not found"};
+    getById = async ({ params }: { params: { id: string } }) => { 
+        const folder = await this.folderUsecase.getFolderById(Number(params.id));     
+        if (!folder) { 
+            return { success: false, message: "Folder not found" };
         }
-
-        return folder;
+    
+        return { success: true, data: folder };
     };
 
     update = async ({ params, body, set }: { params: { id: number }; body: Partial<NewFolder>; set: any }) => {

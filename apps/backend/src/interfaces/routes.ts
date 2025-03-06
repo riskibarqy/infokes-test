@@ -1,4 +1,6 @@
 import { Elysia } from 'elysia';
+import { cors } from '@elysiajs/cors';
+
 import { FileController } from '@/interfaces/controllers/file_controller';
 import { FileUsecase } from '@/usecases/file_usecase';
 import { PostgresFileRepository } from '@/adapters/database/postgresFileRepository';
@@ -6,7 +8,7 @@ import { PostgresFolderRepository } from '@/adapters/database/postgresFolderRepo
 import { FolderUsecase } from '@/usecases/folder_usecase';
 import { FolderController } from './controllers/folder_controller';
 
-export const routes = new Elysia();
+export const routes = new Elysia().use(cors()); 
 
 const fileRepo = new PostgresFileRepository();
 const fileUsecase = new FileUsecase(fileRepo);

@@ -19,8 +19,13 @@ export class FileController {
         }
     };
 
-    getById = async ({ id }: { id: number }) => { 
-        return await this.fileUsecase.getFileById(id);
+    getById = async ({ params }: { params: { id: string } }) => { 
+        const file = await this.fileUsecase.getFileById(Number(params.id));     
+        if (!file) { 
+            return { success: false, message: "File not found" };
+        }
+    
+        return { success: true, data: file };
     };
 
     update = async ({ params, body, set }: { params: { id: number }; body: Partial<NewFile>; set: any }) => {
