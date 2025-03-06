@@ -2,24 +2,28 @@
 
 This is a technical test project using **Vue 3** (Composition API) for the frontend and **ElysiaJS** for the backend. The project is structured as a **monorepo** using **Docker**.
 
+[Screenshot 2025-03-06 231701.png](image)
+
 ## Prerequisites
 
 Ensure you have the following installed:
 - [Docker](https://www.docker.com/)
-- [Bun](https://bun.sh/) (used for package management)
+- [Bun](https://bun.sh/) 
 - [Make](https://www.gnu.org/software/make/)
 
 ## Project Structure
 ```
 .
 ├── apps/
-│   ├── backend/      # Backend using ElysiaJS
-│   ├── frontend/     # Frontend using Vue 3
-├── makefile          # Makefile for automation
-├── package.json      # Root package.json for monorepo
-├── bun.lock          # Bun lock file
-├── docker-compose.yml # Docker Compose config
-└── README.md         # Project documentation
+│   ├── backend/                          # Backend using ElysiaJS
+│   ├── frontend/                         # Frontend using Vue 3
+├── .env_example                          # example env (copy or create file and rename to .env)
+├── makefile                              # Makefile for automation
+├── package.json                          # Root package.json for monorepo
+├── bun.lock                              # Bun lock file
+├── docker-compose.yml                    # Docker Compose config
+├── Infokes Test.postman_collection.json  # Postman collection
+└── README.md                             # Project documentation
 ```
 
 ## Setup & Running the Project

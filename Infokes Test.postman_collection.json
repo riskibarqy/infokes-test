@@ -1,0 +1,1360 @@
+{
+	"info": {
+		"_postman_id": "2a181077-2595-49ad-929d-fc8e4708e969",
+		"name": "Infokes Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24998345"
+	},
+	"item": [
+		{
+			"name": "Folders",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, name, parentId, createdAt, and updatedAt\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    responseData.forEach(folder => {",
+									"        pm.expect(folder).to.have.property('id');",
+									"        pm.expect(folder).to.have.property('name');",
+									"        pm.expect(folder).to.have.property('parentId');",
+									"        pm.expect(folder).to.have.property('createdAt');",
+									"        pm.expect(folder).to.have.property('updatedAt');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(folder) {",
+									"        pm.expect(folder.id).to.be.a('number');",
+									"        pm.expect(folder.id).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('array');",
+									"  responseData.forEach(function(folder) {",
+									"    pm.expect(folder.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"ParentId is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item.parentId).to.be.a('number').and.to.be.at.least(0);",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/folders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/folders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 14:07:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1268"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Home Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270005,\n        \"updatedAt\": 1741270005,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Investment Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270007,\n        \"updatedAt\": 1741270007,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Investment Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270008,\n        \"updatedAt\": 1741270008,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Personal Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270011,\n        \"updatedAt\": 1741270011,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Home Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270013,\n        \"updatedAt\": 1741270013,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Personal Loan Account\",\n        \"parentId\": 2,\n        \"createdAt\": 1741270017,\n        \"updatedAt\": 1741270017,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 7,\n        \"name\": \"Home Loan Account\",\n        \"parentId\": 2,\n        \"createdAt\": 1741270018,\n        \"updatedAt\": 1741270018,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 8,\n        \"name\": \"Money Market Account\",\n        \"parentId\": 1,\n        \"createdAt\": 1741270021,\n        \"updatedAt\": 1741270021,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 9,\n        \"name\": \"Personal Loan Account\",\n        \"parentId\": 4,\n        \"createdAt\": 1741270024,\n        \"updatedAt\": 1741270024,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 10,\n        \"name\": \"Auto Loan Account\",\n        \"parentId\": 4,\n        \"createdAt\": 1741270025,\n        \"updatedAt\": 1741270025,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Savings Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270028,\n        \"updatedAt\": 1741270028,\n        \"deletedAt\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Folder Tree",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the folder object\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('array');",
+									"  responseData.forEach(folder => {",
+									"    pm.expect(folder).to.be.an('object');",
+									"    pm.expect(folder.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(folder.name).to.exist.and.to.be.a('string');",
+									"    pm.expect(folder.parentId).to.exist.and.to.satisfy(val => val === null || typeof val === 'number');",
+									"    pm.expect(folder.createdAt).to.exist.and.to.be.a('number');",
+									"    pm.expect(folder.updatedAt).to.exist.and.to.be.a('number');",
+									"    pm.expect(folder.deletedAt).to.satisfy(val => val === null || typeof val === 'number');",
+									"    pm.expect(folder.children).to.be.an('array');",
+									"    folder.children.forEach(child => {",
+									"      pm.expect(child).to.be.an('object');",
+									"      pm.expect(child.id).to.exist.and.to.be.a('number');",
+									"      pm.expect(child.name).to.exist.and.to.be.a('string');",
+									"      pm.expect(child.parentId).to.exist.and.to.be.a('number');",
+									"      pm.expect(child.createdAt).to.exist.and.to.be.a('number');",
+									"      pm.expect(child.updatedAt).to.exist.and.to.be.a('number');",
+									"      pm.expect(child.deletedAt).to.satisfy(val => val === null || typeof val === 'number');",
+									"      pm.expect(child.children).to.be.an('array');",
+									"      pm.expect(child.files).to.be.an('array');",
+									"    });",
+									"    pm.expect(folder.files).to.be.an('array');",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Children array is present and has expected number of elements\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    pm.expect(responseData[0].children).to.exist.and.to.be.an('array').with.lengthOf(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Files array is present and contains expected number of elements\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(folder => {",
+									"        pm.expect(folder.files).to.exist;",
+									"        pm.expect(folder.files).to.be.an('array');",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/folders/tree",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders",
+								"tree"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Folder Tree",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/folders/tree",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders",
+										"tree"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 14:10:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3158"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Home Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270005,\n        \"updatedAt\": 1741270005,\n        \"deletedAt\": null,\n        \"children\": [\n            {\n                \"id\": 8,\n                \"name\": \"Money Market Account\",\n                \"parentId\": 1,\n                \"createdAt\": 1741270021,\n                \"updatedAt\": 1741270021,\n                \"deletedAt\": null,\n                \"children\": [],\n                \"files\": []\n            }\n        ],\n        \"files\": [\n            {\n                \"id\": 16,\n                \"name\": \"money_systemic.z7\",\n                \"folderId\": 1,\n                \"createdAt\": 1741270174,\n                \"updatedAt\": 1741270174,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 4,\n                \"name\": \"phased_calculate_strategize.nbp\",\n                \"folderId\": 1,\n                \"createdAt\": 1741270046,\n                \"updatedAt\": 1741270046,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 6,\n                \"name\": \"human_resource_agent.xdm\",\n                \"folderId\": 1,\n                \"createdAt\": 1741270050,\n                \"updatedAt\": 1741270050,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 8,\n                \"name\": \"denmark_market_frozen.grv\",\n                \"folderId\": 1,\n                \"createdAt\": 1741270051,\n                \"updatedAt\": 1741270051,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 13,\n                \"name\": \"steel.uvz\",\n                \"folderId\": 1,\n                \"createdAt\": 1741270070,\n                \"updatedAt\": 1741270070,\n                \"deletedAt\": null\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Investment Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270007,\n        \"updatedAt\": 1741270007,\n        \"deletedAt\": null,\n        \"children\": [\n            {\n                \"id\": 6,\n                \"name\": \"Personal Loan Account\",\n                \"parentId\": 2,\n                \"createdAt\": 1741270017,\n                \"updatedAt\": 1741270017,\n                \"deletedAt\": null,\n                \"children\": [],\n                \"files\": []\n            },\n            {\n                \"id\": 7,\n                \"name\": \"Home Loan Account\",\n                \"parentId\": 2,\n                \"createdAt\": 1741270018,\n                \"updatedAt\": 1741270018,\n                \"deletedAt\": null,\n                \"children\": [],\n                \"files\": []\n            }\n        ],\n        \"files\": [\n            {\n                \"id\": 1,\n                \"name\": \"leverage_soft_loan.ami\",\n                \"folderId\": 2,\n                \"createdAt\": 1741270041,\n                \"updatedAt\": 1741270041,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 10,\n                \"name\": \"actuating.hps\",\n                \"folderId\": 2,\n                \"createdAt\": 1741270062,\n                \"updatedAt\": 1741270062,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 12,\n                \"name\": \"cross_platform.torrent\",\n                \"folderId\": 2,\n                \"createdAt\": 1741270066,\n                \"updatedAt\": 1741270066,\n                \"deletedAt\": null\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Investment Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270008,\n        \"updatedAt\": 1741270008,\n        \"deletedAt\": null,\n        \"children\": [],\n        \"files\": [\n            {\n                \"id\": 2,\n                \"name\": \"24_7_networks_mobile.dis\",\n                \"folderId\": 3,\n                \"createdAt\": 1741270043,\n                \"updatedAt\": 1741270043,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 9,\n                \"name\": \"reintermediate.mets\",\n                \"folderId\": 3,\n                \"createdAt\": 1741270052,\n                \"updatedAt\": 1741270052,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 3,\n                \"name\": \"capacity.npx\",\n                \"folderId\": 3,\n                \"createdAt\": 1741270045,\n                \"updatedAt\": 1741270045,\n                \"deletedAt\": null\n            },\n            {\n                \"id\": 11,\n                \"name\": \"enhance.x32\",\n                \"folderId\": 3,\n                \"createdAt\": 1741270063,\n                \"updatedAt\": 1741270063,\n                \"deletedAt\": null\n            }\n        ]\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Personal Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270011,\n        \"updatedAt\": 1741270011,\n        \"deletedAt\": null,\n        \"children\": [\n            {\n                \"id\": 9,\n                \"name\": \"Personal Loan Account\",\n                \"parentId\": 4,\n                \"createdAt\": 1741270024,\n                \"updatedAt\": 1741270024,\n                \"deletedAt\": null,\n                \"children\": [],\n                \"files\": []\n            },\n            {\n                \"id\": 10,\n                \"name\": \"Auto Loan Account\",\n                \"parentId\": 4,\n                \"createdAt\": 1741270025,\n                \"updatedAt\": 1741270025,\n                \"deletedAt\": null,\n                \"children\": [],\n                \"files\": []\n            }\n        ],\n        \"files\": [\n            {\n                \"id\": 7,\n                \"name\": \"deliverables_north_courts.gam\",\n                \"folderId\": 4,\n                \"createdAt\": 1741270050,\n                \"updatedAt\": 1741270050,\n                \"deletedAt\": null\n            }\n        ]\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Home Loan Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270013,\n        \"updatedAt\": 1741270013,\n        \"deletedAt\": null,\n        \"children\": [],\n        \"files\": [\n            {\n                \"id\": 5,\n                \"name\": \"impactful_optimization.atomsvc\",\n                \"folderId\": 5,\n                \"createdAt\": 1741270049,\n                \"updatedAt\": 1741270049,\n                \"deletedAt\": null\n            }\n        ]\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Savings Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270028,\n        \"updatedAt\": 1741270028,\n        \"deletedAt\": null,\n        \"children\": [],\n        \"files\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property('success');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Data object should exist and be an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0, \"Value should be a non-negative integer\");",
+									"});",
+									"",
+									"pm.test(\"ParentId is either null or a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.parentId).to.satisfy((val) => val === null || (typeof val === 'number' && val >= 0), \"Value should be either null or a non-negative integer\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/folders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/folders/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 14:17:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Investment Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270007,\n        \"updatedAt\": 1741270007,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData).to.have.property('success');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Folder object is present in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.have.property('folder');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Folder object contains valid id, name, parentId, createdAt, and updatedAt fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.folder).to.be.an('object');",
+									"  pm.expect(responseData.folder.id).to.be.a('number');",
+									"  pm.expect(responseData.folder.name).to.be.a('string');",
+									"  pm.expect(responseData.folder.parentId).to.be.a('number');",
+									"  pm.expect(responseData.folder.createdAt).to.be.a('number');",
+									"  pm.expect(responseData.folder.updatedAt).to.be.a('number');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"{{$randomBankAccountName}}\",\r\n    \"parentId\" :1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/folders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"{{$randomBankAccountName}}\",\r\n    \"parentId\" :null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/folders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 14:07:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"folder\": {\n        \"id\": 11,\n        \"name\": \"Savings Account\",\n        \"parentId\": null,\n        \"createdAt\": 1741270028,\n        \"updatedAt\": 1741270028,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field in the response should exist and be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property('success', true);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Folder object in the response should exist and be an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.folder).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
+									"});",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"});",
+									"",
+									"pm.test(\"ParentId is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.parentId).to.be.a('number').and.to.be.at.least(0, \"ParentId should be a non-negative integer\");",
+									"});",
+									"",
+									"pm.test(\"CreatedAt is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.createdAt).to.be.a('number').and.to.be.at.least(0, \"CreatedAt should be a non-negative integer\");",
+									"});",
+									"",
+									"pm.test(\"UpdatedAt is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.updatedAt).to.be.a('number').and.to.be.at.least(0, \"UpdatedAt should be a non-negative integer\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"parent folder id 1\",\r\n    \"parentId\" :1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/folders/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"parent folder id 1\",\r\n    \"parentId\" :1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/folders/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 14:18:01 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "138"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"folder\": {\n        \"id\": 2,\n        \"name\": \"parent folder id 1\",\n        \"parentId\": 1,\n        \"createdAt\": 1741270007,\n        \"updatedAt\": 1741270681,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present and has a boolean value\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.have.property('success').that.is.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field should be empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.equal(\"\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Ensure that the response does not contain any other unexpected fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(Object.keys(responseData)).to.have.lengthOf(2);",
+									"    pm.expect(responseData).to.have.property('success');",
+									"    pm.expect(responseData).to.have.property('message');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/folders/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"folders",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/folders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"folders",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Vary",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 16:43:50 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Folder deleted successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an empty array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify the expected number of elements in the response array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').with.lengthOf(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/files",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Vary",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 16:44:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "827"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"integration_beauty_customized.doc\",\n        \"folderId\": 2,\n        \"createdAt\": 1741279455,\n        \"updatedAt\": 1741279455,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"rubber.hh\",\n        \"folderId\": 2,\n        \"createdAt\": 1741279456,\n        \"updatedAt\": 1741279456,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 3,\n        \"name\": \"handmade_global.wbs\",\n        \"folderId\": 2,\n        \"createdAt\": 1741279458,\n        \"updatedAt\": 1741279458,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 4,\n        \"name\": \"practical_south.sea\",\n        \"folderId\": 1,\n        \"createdAt\": 1741279461,\n        \"updatedAt\": 1741279461,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 5,\n        \"name\": \"refined_coordinator_investor.z6\",\n        \"folderId\": 1,\n        \"createdAt\": 1741279462,\n        \"updatedAt\": 1741279462,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 6,\n        \"name\": \"wooden_withdrawal.list\",\n        \"folderId\": null,\n        \"createdAt\": 1741279466,\n        \"updatedAt\": 1741279466,\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 7,\n        \"name\": \"communications_sdd.mxu\",\n        \"folderId\": null,\n        \"createdAt\": 1741279466,\n        \"updatedAt\": 1741279466,\n        \"deletedAt\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - success and message\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.have.property('success');",
+									"    pm.expect(responseData).to.have.property('message');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success value is a boolean true\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.be.a('boolean').and.to.equal(true);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/files/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"files",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Vary",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "user-agent, accept, cache-control, host, accept-encoding, connection, postman-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 16:44:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "151"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"integration_beauty_customized.doc\",\n        \"folderId\": 2,\n        \"createdAt\": 1741279455,\n        \"updatedAt\": 1741279455,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present and has a boolean value\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.have.property('success').that.is.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"File object is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData).to.have.property('file');",
+									"});",
+									"",
+									"",
+									"pm.test(\"File object properties validation\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    ",
+									"    pm.expect(responseData.file.id).to.be.a('number').and.to.be.at.least(0, \"ID should be a non-negative integer\");",
+									"    pm.expect(responseData.file.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
+									"    pm.expect(responseData.file.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"CreatedAt should be a valid timestamp\");",
+									"    pm.expect(responseData.file.updatedAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"UpdatedAt should be a valid timestamp\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"{{$randomFileName}}\",\r\n    \"folderId\" :null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"{{$randomFileName}}\",\r\n    \"folderId\" :null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/files",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Vary",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "content-type, user-agent, accept, cache-control, host, accept-encoding, connection, content-length, postman-token"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "content-type, user-agent, accept, cache-control, host, accept-encoding, connection, content-length, postman-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 16:44:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"file\": {\n        \"id\": 7,\n        \"name\": \"communications_sdd.mxu\",\n        \"folderId\": null,\n        \"createdAt\": 1741279466,\n        \"updatedAt\": 1741279466,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present and has a boolean value\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.have.property('success').that.is.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"File object is present in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData).to.have.property('file');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id in the file object is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.file).to.exist;",
+									"  pm.expect(responseData.file.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"unknown\",\r\n    \"folder_id\" :null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/files/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"unknown\",\r\n    \"folder_id\" :null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/files/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"files",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Vary",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "content-type, user-agent, accept, cache-control, host, accept-encoding, connection, content-length, postman-token"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "content-type, user-agent, accept, cache-control, host, accept-encoding, connection, content-length, postman-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Mar 2025 16:44:48 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"file\": {\n        \"id\": 1,\n        \"name\": \"unknown\",\n        \"folderId\": 2,\n        \"createdAt\": 1741279455,\n        \"updatedAt\": 1741279489,\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"  pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property('success');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field should exist and be a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"No unexpected fields in the response body\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object').and.to.not.include.any.keys('unexpectedField1', 'unexpectedField2');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
